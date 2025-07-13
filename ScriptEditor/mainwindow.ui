@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>908</width>
+    <height>510</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Безымянный - Cкрипт</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QTextEdit {
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+    font-family: 'Arial';
+    font-size: 14px;
+    color: #333;
+}
+
+QTextEdit:disabled {
+    background-color: #ebebeb;
+    color: #666;
+}
+
+/* Стиль для кнопки отправки */
+QPushButton#pushButton_send {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-weight: bold;
+}
+
+QPushButton#pushButton_send:hover {
+    background-color: #45a049;
+}
+
+QPushButton#pushButton_send:pressed {
+    background-color: #3d8b40;
+}
+
+QPushButton#pushButton_send:disabled {
+    background-color: #cccccc;
+    color: #666666;
+}
+
+/* Стиль для полей ввода порта и адреса */
+QLineEdit#lineEdit_port, QLineEdit#lineEdit_address {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 6px;
+    font-family: 'Arial';
+    font-size: 14px;
+}
+
+QLineEdit#lineEdit_port:focus, QLineEdit#lineEdit_address:focus {
+    border: 1px solid #4CAF50;
+}
+
+/* Стиль для меток порта и адреса */
+QLabel#label_port, QLabel#label_address {
+    font-family: 'Arial';
+    font-size: 14px;
+    color: #333333;
+    font-weight: bold;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>715</width>
+     <height>0</height>
+    </size>
+   </property>
+   <widget class="QTextEdit" name="textEdit">
+    <property name="geometry">
+     <rect>
+      <x>11</x>
+      <y>11</y>
+      <width>621</width>
+      <height>441</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>16777215</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_address">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>50</y>
+      <width>241</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_port">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>130</y>
+      <width>241</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_address">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>10</y>
+      <width>121</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Адрес</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_port">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>90</y>
+      <width>81</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Порт</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_send">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>184</y>
+      <width>241</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>13</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Отправить скрипт</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>908</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>Файл</string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="action_newwindow"/>
+    <addaction name="action_newfile"/>
+    <addaction name="action_openfile"/>
+    <addaction name="action_savefile"/>
+    <addaction name="action_savefileas"/>
+    <addaction name="separator"/>
+    <addaction name="action_exit"/>
+   </widget>
+   <widget class="QMenu" name="menu_2">
+    <property name="title">
+     <string>Вид</string>
+    </property>
+    <addaction name="action_zoomin"/>
+    <addaction name="action_zoomout"/>
+    <addaction name="action_reset"/>
+   </widget>
+   <addaction name="menu"/>
+   <addaction name="menu_2"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="action_newfile">
+   <property name="text">
+    <string>Новый</string>
+   </property>
+  </action>
+  <action name="action_openfile">
+   <property name="text">
+    <string>Открыть</string>
+   </property>
+  </action>
+  <action name="action_savefile">
+   <property name="text">
+    <string>Сохранить</string>
+   </property>
+  </action>
+  <action name="action_savefileas">
+   <property name="text">
+    <string>Сохранить как</string>
+   </property>
+  </action>
+  <action name="action_zoomin">
+   <property name="text">
+    <string>Увеличить шрифт</string>
+   </property>
+  </action>
+  <action name="action_zoomout">
+   <property name="text">
+    <string>Уменьшить шрифт</string>
+   </property>
+  </action>
+  <action name="action_reset">
+   <property name="text">
+    <string>Сбросить</string>
+   </property>
+  </action>
+  <action name="action_newwindow">
+   <property name="text">
+    <string>Новое окно</string>
+   </property>
+  </action>
+  <action name="action_exit">
+   <property name="text">
+    <string>Выход</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

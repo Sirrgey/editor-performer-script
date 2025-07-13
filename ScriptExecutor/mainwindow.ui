@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QLabel {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 15px;
+    color: #2c3e50;
+    padding: 6px 0;
+    font-weight: 500;
+    qproperty-alignment: AlignLeft;
+    background: transparent;
+}
+QWidget {
+    background-color: #ecf0f1;
+    font-family: 'Segoe UI', sans-serif;
+    border-radius: 8px;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>751</width>
+      <height>451</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>490</y>
+      <width>211</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+      <pointsize>-1</pointsize>
+      <weight>62</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    /* Основа */
+    background-color: #6200EE; /* Фиолетовый (Material Design) */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 24px;
+    font-size: 14px;
+    font-weight: 500;
+    
+    /* Тень для объема */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+QPushButton:hover {
+    background-color: #7C4DFF; /* Светлее на hover */
+}
+
+QPushButton:pressed {
+    background-color: #3700B3; /* Темнее при нажатии */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+QPushButton:disabled {
+    background-color: #E0E0E0;
+    color: #9E9E9E;
+}</string>
+    </property>
+    <property name="text">
+     <string>Отрисовать</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>495</y>
+      <width>521</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+      <pointsize>-1</pointsize>
+      <weight>62</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Скриптов нет</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>25</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
