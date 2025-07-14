@@ -5,16 +5,16 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow), udpsocket(nullptr)
 {
-     ui->setupUi(this);
-     ui->textEdit->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-     QRegExp regExp("(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)");
-     ui->lineEdit_address->setValidator(new QRegExpValidator(regExp,this));
-     QRegExp regExpPort("\\d+");
-     ui->lineEdit_port->setValidator(new QRegExpValidator(regExpPort, this));
-     ui->lineEdit_address->setText("127.0.0.1");
-     ui->lineEdit_port->setText("55");
+    ui->setupUi(this);
+    ui->textEdit->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    QRegExp regExp("(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)");
+    ui->lineEdit_address->setValidator(new QRegExpValidator(regExp,this));
+    QRegExp regExpPort("\\d+");
+    ui->lineEdit_port->setValidator(new QRegExpValidator(regExpPort, this));
+    ui->lineEdit_address->setText("127.0.0.1");
+    ui->lineEdit_port->setText("55");
 
-     udpsocket = new QUdpSocket(this);
+    udpsocket = new QUdpSocket(this);
 
 }
 
@@ -30,10 +30,10 @@ void MainWindow::on_action_exit_triggered() // закрытие приложен
 
 void MainWindow::closeEvent(QCloseEvent *event) //обработка сигнала закрытия формы - нажатие кнопки крестик(выход)
 {
-//    //имя файла
-//    QString file_name;
-//    //получаем имя файла(путь к файлу)
-//    file_name = MainWindow::windowTitle();
+    //    //имя файла
+    //    QString file_name;
+    //    //получаем имя файла(путь к файлу)
+    //    file_name = MainWindow::windowTitle();
     // случай если файл существует в системе(такой путь есть)
     if (QFile::exists(path_file)){
         QFile file;
@@ -67,12 +67,12 @@ void MainWindow::closeEvent(QCloseEvent *event) //обработка сигна�
                 msgBox.close();
                 event->accept();
                 break;
-            //пользователь выбрал сохранить данные
+                //пользователь выбрал сохранить данные
             case QMessageBox::No:
                 msgBox.close();
                 event->accept();
                 break;
-            //пользователь выбрал отменить операцию
+                //пользователь выбрал отменить операцию
             case QMessageBox::Cancel:
                 msgBox.close();
                 event->ignore();
@@ -103,17 +103,17 @@ void MainWindow::closeEvent(QCloseEvent *event) //обработка сигна�
             event->ignore();
             msgBox.close();
             return;
-           // break;
+            // break;
         case QMessageBox::No:
             msgBox.close();
             event->accept();
             return;
-           // break;
+            // break;
         case QMessageBox::Cancel:
             msgBox.close();
             event->ignore();
             return;
-           // break;
+            // break;
 
 
         }
@@ -125,9 +125,9 @@ void MainWindow::closeEvent(QCloseEvent *event) //обработка сигна�
 void MainWindow::on_action_newfile_triggered() // создание нового файла
 {
     // имя файла
-//    QString file_name;
-//    //получаем имя файла(путь к нему)
-//    file_name = MainWindow::windowTitle();
+    //    QString file_name;
+    //    //получаем имя файла(путь к нему)
+    //    file_name = MainWindow::windowTitle();
     // случай если файл существует в системе(такой путь есть), сохраняем его без помощи окна
     if (QFile::exists(path_file)){
         QFile file;
@@ -208,10 +208,7 @@ void MainWindow::on_action_newfile_triggered() // создание нового 
             break;
         case QMessageBox::Cancel:
             msgBox.close();
-
             break;
-
-
         }
     }
 
@@ -219,30 +216,28 @@ void MainWindow::on_action_newfile_triggered() // создание нового 
 
 bool  MainWindow::on_action_savefile_triggered() // сохранение данных в уже существующий файл
 {
-   // имя файла
-//   QString file_name;
-//   //получаем имя файла(путь к нему)
-//   file_name = MainWindow::windowTitle();
-   // случай если файл существует в системе(такой путь есть), сохраняем его без помощи окна
+    // имя файла
+    //   QString file_name;
+    //   //получаем имя файла(путь к нему)
+    //   file_name = MainWindow::windowTitle();
+    // случай если файл существует в системе(такой путь есть), сохраняем его без помощи окна
     no_change = false;
-   if (QFile::exists(path_file)) {
-       QFile file;
-       file.setFileName(path_file);
-       file.open(QIODevice::WriteOnly);
-       file.write(ui->textEdit->toPlainText().toUtf8());//запись в файл
-
-       file.close();//закрываем
-       QFileInfo fileInfo(file.fileName());
-       QString file_short_name = fileInfo.fileName();
-       MainWindow::setWindowTitle(file_short_name);
-       return true;
-
-       //no_change = true;
-   }
-   // случай если файл не существует в системе(таково пути нет), сохраняем его при помощи окна(впервые)
-   else {
-      return  on_action_savefileas_triggered();
-   }
+    if (QFile::exists(path_file)) {
+        QFile file;
+        file.setFileName(path_file);
+        file.open(QIODevice::WriteOnly);
+        file.write(ui->textEdit->toPlainText().toUtf8());//запись в файл
+        file.close();//закрываем
+        QFileInfo fileInfo(file.fileName());
+        QString file_short_name = fileInfo.fileName();
+        MainWindow::setWindowTitle(file_short_name);
+        return true;
+    }
+    // случай если файл не существует в системе(таково пути нет), сохраняем его при помощи окна(впервые)
+    else
+    {
+        return  on_action_savefileas_triggered();
+    }
 }
 
 bool MainWindow::on_action_savefileas_triggered() // сохранение файла впервые с выбраным именем
@@ -255,7 +250,6 @@ bool MainWindow::on_action_savefileas_triggered() // сохранение фай
             QMessageBox::warning(this, "Ошибка", "Не удалось открыть файл для записи.");
             return false;
         }
-
         QTextStream out(&file);
         out.setCodec("UTF-8");
         out << ui->textEdit->toPlainText();
@@ -266,7 +260,6 @@ bool MainWindow::on_action_savefileas_triggered() // сохранение фай
 
         QString file_short_name = QFileInfo(file_name).fileName();
         setWindowTitle(file_short_name);
-
         return true;
     }
     return false;
@@ -332,13 +325,13 @@ void MainWindow::on_action_openfile_triggered() // открытие файла
                 on_action_openfile_triggered();//открываем файл
                 msgBox.close(); // скрываем окно с предупреждением(выбором)
                 break;
-            //пользователь выбрал не сохранять данные
+                //пользователь выбрал не сохранять данные
             case QMessageBox::No:
                 on_action_openfile_triggered();//открываем файл
                 msgBox.close();// скрываем окно с предупреждением(выбором)
                 return;
                 break;
-            //пользователь выбрал отменить  операцию
+                //пользователь выбрал отменить  операцию
             case QMessageBox::Cancel:
                 msgBox.close();// скрываем окно с предупреждением(выбором)
                 break;
@@ -383,42 +376,40 @@ void MainWindow::on_action_openfile_triggered() // открытие файла
             }
             msgBox.close();
             break;
-        //пользователь выбрал не сохранять данные
+            //пользователь выбрал не сохранять данные
 
         case QMessageBox::No:
-                file_dir = QFileDialog::getOpenFileName(this,tr("Открыть файл"),directory_path, tr("Text files (*.qs)"));
-                //проверяем выбран ли фаил
-                if (!file_dir.isEmpty())
-                {//фаил выбран
-                    ui->textEdit->clear();
-                    QFile file;
-                    file.setFileName(file_dir);
-                    file.open(QIODevice::ReadOnly);
-                    QByteArray ba;//массив для передачи данных
-                    ba.clear();
-                    long long int size;//размер файла
-                    size=file.size();
-                    ba=file.read(size);//чтение из файла
-                    ui->textEdit->append(QString::fromUtf8(ba));//копирование в поле редактора
-                    file.close();//закрываем
-                    path_file = file_dir;
-                    QFileInfo fileInfo(file.fileName());
-                    QString file_short_name = fileInfo.fileName();
-                    MainWindow::setWindowTitle(file_short_name);
-                }
-                msgBox.close();// скрываем окно с предупреждением(выбором)
-                break;
-
-        //пользователь выбрал отменить операцию
-        case QMessageBox::Cancel:
+            file_dir = QFileDialog::getOpenFileName(this,tr("Открыть файл"),directory_path, tr("Text files (*.qs)"));
+            //проверяем выбран ли фаил
+            if (!file_dir.isEmpty())
+            {//фаил выбран
+                ui->textEdit->clear();
+                QFile file;
+                file.setFileName(file_dir);
+                file.open(QIODevice::ReadOnly);
+                QByteArray ba;//массив для передачи данных
+                ba.clear();
+                long long int size;//размер файла
+                size=file.size();
+                ba=file.read(size);//чтение из файла
+                ui->textEdit->append(QString::fromUtf8(ba));//копирование в поле редактора
+                file.close();//закрываем
+                path_file = file_dir;
+                QFileInfo fileInfo(file.fileName());
+                QString file_short_name = fileInfo.fileName();
+                MainWindow::setWindowTitle(file_short_name);
+            }
             msgBox.close();// скрываем окно с предупреждением(выбором)
             break;
 
-
+            //пользователь выбрал отменить операцию
+        case QMessageBox::Cancel:
+            msgBox.close();// скрываем окно с предупреждением(выбором)
+            break;
         }
     }
-    else {
-        //имя файла
+    else
+    {   //имя файла
         QString file_dir;
         //получаем имя файла( путь к файлу)
         file_dir = QFileDialog::getOpenFileName(this,tr("Открыть файл"),directory_path, tr("Text files (*.qs)"));
@@ -498,45 +489,45 @@ void MainWindow::on_action_newwindow_triggered()// создаем еще одн�
 void MainWindow::on_textEdit_textChanged()
 {
 
-        if (path_file == "") {
-            if (ui->textEdit->toPlainText().isEmpty()) {
-                this->setWindowTitle("Безымянный - Cкрипт");
-                path_file = "";
-            }
-            else {
+    if (path_file == "") {
+        if (ui->textEdit->toPlainText().isEmpty()) {
+            this->setWindowTitle("Безымянный - Cкрипт");
+            path_file = "";
+        }
+        else {
 
-                QString modtitle = this->windowTitle();
-                if (!modtitle.contains("*")){
-                    this->setWindowTitle("*" + modtitle);
-                }
+            QString modtitle = this->windowTitle();
+            if (!modtitle.contains("*")){
+                this->setWindowTitle("*" + modtitle);
+            }
+        }
+    }
+    else {
+        QFile file;
+        file.setFileName(path_file);
+        file.open(QIODevice::ReadOnly);
+        QByteArray ba;//массив для передачи данных
+        ba.clear();
+        long long int size;//размер файла
+        size=file.size();
+        ba=file.read(size);//чтение из файла
+        file.close();
+        //проверка на то, что файл сохранить не нужно(то есть он не изменен)
+        if (QString::fromUtf8(ba) != ui->textEdit->toPlainText())
+        {
+            QString modtitle = this->windowTitle();
+            if (!modtitle.contains("*")){
+                this->setWindowTitle("*" + modtitle);
             }
         }
         else {
-            QFile file;
-            file.setFileName(path_file);
-            file.open(QIODevice::ReadOnly);
-            QByteArray ba;//массив для передачи данных
-            ba.clear();
-            long long int size;//размер файла
-            size=file.size();
-            ba=file.read(size);//чтение из файла
-            file.close();
-            //проверка на то, что файл сохранить не нужно(то есть он не изменен)
-            if (QString::fromUtf8(ba) != ui->textEdit->toPlainText()) {
-
-                QString modtitle = this->windowTitle();
-                if (!modtitle.contains("*")){
-                    this->setWindowTitle("*" + modtitle);
-                }
-            }
-            else {
-                QFileInfo fileInfo(file.fileName());
-                QString file_short_name = fileInfo.fileName();
-                MainWindow::setWindowTitle(file_short_name);
-
-            }
+            QFileInfo fileInfo(file.fileName());
+            QString file_short_name = fileInfo.fileName();
+            MainWindow::setWindowTitle(file_short_name);
 
         }
+
+    }
 
 }
 
