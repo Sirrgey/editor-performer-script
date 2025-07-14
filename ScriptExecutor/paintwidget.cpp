@@ -33,13 +33,15 @@ void paintwidget::paintEvent(QPaintEvent *event)
                 break;
 
             case Shape::Circle:
-                painter.setBrush(shape.color);
-                painter.setPen(QPen(shape.color, 2));
+                painter.setPen(QPen(shape.color.isValid() ? shape.color : QColor("#40E0D0"),
+                               shape.penWidth > 0 ? shape.penWidth : 2));
+                // Отключаем заливку
+                painter.setBrush(Qt::NoBrush);
+                // Рисуем окружность
                 painter.drawEllipse(shape.center, shape.radius, shape.radius);
                 break;
 
             case Shape::Line:
-                qDebug() << "Line";
                 if (shape.points.size() == 2) {
 
                     QPen pen(shape.color, shape.penWidth);

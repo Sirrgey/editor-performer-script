@@ -28,6 +28,7 @@ void ScriptInterface::drawCircle(int x, int y, int radius, const QString &color)
         shape.color = Qt::black; // fallback
     }
     shapes.append(shape);
+
 }
 
 // Добавляем в структуру треугольник
@@ -56,7 +57,6 @@ void ScriptInterface::drawRectangle(int x, int y, int w, int h, const QString &c
 void ScriptInterface::drawLine(int x1, int y1, int x2, int y2, const QString &color, int penWidth)
 {
     Shape shape;
-    qDebug() << "drawLine";
     shape.type = Shape::Line;
     shape.points <<QPoint(x1, y1) << QPoint(x2, y2);
     shape.color = QColor(color);

@@ -40,7 +40,7 @@ void MainWindow::on_pushButton_clicked()
 void MainWindow::receivedScript()
 {
     //Показываем уведомление о новом скрипте
-    ui->label->setText("Пришел новый скрипт! Отрисуйте его!");
+    ui->label->setText("Пришел новый скрипт! Загрузите его!");
     // Активируем кнопку для отрисовки
     ui->pushButton->setEnabled(true);
 }

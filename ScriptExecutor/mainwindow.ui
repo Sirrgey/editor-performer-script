@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>600</height>
+    <height>591</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,11 +23,7 @@
     qproperty-alignment: AlignLeft;
     background: transparent;
 }
-QWidget {
-    background-color: #ecf0f1;
-    font-family: 'Segoe UI', sans-serif;
-    border-radius: 8px;
-}</string>
+</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QWidget" name="widget" native="true">
@@ -38,6 +34,24 @@ QWidget {
       <width>751</width>
       <height>451</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget {
+    /* Основной фон */
+    background-color: #f5f5f5;
+    
+    /* Границы */
+    border: 1px solid #d0d0d0;
+    border-radius: 4px;
+    
+    /* Внутренние отступы */
+    padding: 5px;
+    
+    /* Шрифт */
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 14px;
+    color: #333333;
+}</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton">
@@ -67,9 +81,6 @@ QWidget {
     padding: 10px 24px;
     font-size: 14px;
     font-weight: 500;
-    
-    /* Тень для объема */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 QPushButton:hover {
@@ -78,7 +89,6 @@ QPushButton:hover {
 
 QPushButton:pressed {
     background-color: #3700B3; /* Темнее при нажатии */
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 QPushButton:disabled {
@@ -87,7 +97,7 @@ QPushButton:disabled {
 }</string>
     </property>
     <property name="text">
-     <string>Отрисовать</string>
+     <string>Загрузить</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">
