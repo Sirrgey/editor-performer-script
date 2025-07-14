@@ -67,5 +67,5 @@ void ScriptInterface::drawLine(int x1, int y1, int x2, int y2, const QString &co
 // Очищаем структуру
 void ScriptInterface::reset()
 {
-   shapes.clear();
+    shapes.clear();
 }

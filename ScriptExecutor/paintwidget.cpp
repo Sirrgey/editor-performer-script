@@ -22,49 +22,49 @@ void paintwidget::paintEvent(QPaintEvent *event)
         const Shape& shape = *it;
         switch (shape.type)
         {
-            case Shape::Triangle:
-                if (shape.points.size() == 3)
-                {
-                    QPolygon polygon(shape.points);
-                    painter.setBrush(shape.color);
-                    painter.setPen(Qt::black);
-                    painter.drawPolygon(polygon);
-                }
-                break;
-
-            case Shape::Circle:
-                painter.setPen(QPen(shape.color.isValid() ? shape.color : QColor("#40E0D0"),
-                               shape.penWidth > 0 ? shape.penWidth : 2));
-                // Отключаем заливку
-                painter.setBrush(Qt::NoBrush);
-                // Рисуем окружность
-                painter.drawEllipse(shape.center, shape.radius, shape.radius);
-                break;
-
-            case Shape::Line:
-                if (shape.points.size() == 2) {
-
-                    QPen pen(shape.color, shape.penWidth);
-                    painter.setPen(pen);
-
-                    painter.drawLine(shape.points[0], shape.points[1]);
-                }
-                break;
-
-            case Shape::FilledCircle:
+        case Shape::Triangle:
+            if (shape.points.size() == 3)
+            {
+                QPolygon polygon(shape.points);
                 painter.setBrush(shape.color);
-                painter.setPen(Qt::NoPen);
-                painter.drawEllipse(shape.center, shape.radius, shape.radius);
-                break;
+                painter.setPen(Qt::black);
+                painter.drawPolygon(polygon);
+            }
+            break;
 
-            case Shape::Rectangle:
-                if (shape.points.size() == 2) {
-                    QRect rect(shape.points[0], shape.points[1]);
-                    painter.setBrush(shape.color);
-                    painter.setPen(Qt::black);
-                    painter.drawRect(rect);
-                }
-                break;
+        case Shape::Circle:
+            painter.setPen(QPen(shape.color.isValid() ? shape.color : QColor("#40E0D0"),
+                                shape.penWidth > 0 ? shape.penWidth : 2));
+            // Отключаем заливку
+            painter.setBrush(Qt::NoBrush);
+            // Рисуем окружность
+            painter.drawEllipse(shape.center, shape.radius, shape.radius);
+            break;
+
+        case Shape::Line:
+            if (shape.points.size() == 2) {
+
+                QPen pen(shape.color, shape.penWidth);
+                painter.setPen(pen);
+
+                painter.drawLine(shape.points[0], shape.points[1]);
+            }
+            break;
+
+        case Shape::FilledCircle:
+            painter.setBrush(shape.color);
+            painter.setPen(Qt::NoPen);
+            painter.drawEllipse(shape.center, shape.radius, shape.radius);
+            break;
+
+        case Shape::Rectangle:
+            if (shape.points.size() == 2) {
+                QRect rect(shape.points[0], shape.points[1]);
+                painter.setBrush(shape.color);
+                painter.setPen(Qt::black);
+                painter.drawRect(rect);
+            }
+            break;
         }
     }
 }

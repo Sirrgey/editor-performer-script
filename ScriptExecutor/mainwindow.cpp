@@ -33,8 +33,6 @@ void MainWindow::on_pushButton_clicked()
     ui->label->setText("");
     // Деактивируем кнопку до получения нового скрипта
     ui->pushButton->setEnabled(false);
-
-
 }
 
 void MainWindow::receivedScript()
